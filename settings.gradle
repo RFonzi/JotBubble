@@ -1,0 +1,5 @@
+include ':app'
+include ':libraries:persistence'
+include ':libraries:model'
+include ':libraries:persistence-inmemory'
+rootProject.name = 'JotBubble'
