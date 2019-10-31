@@ -10,7 +10,7 @@ import com.rfonzi.libraries.persistence.GetBubble
 class MainViewModel(private val getBubble: GetBubble) : ViewModel() {
 
     val ui: MutableLiveData<MainUiModel> by lazy {
-        MutableLiveData(MainUiModel(getBubble.getAllBubbles(), false, ""))
+        MutableLiveData(MainUiModel(getBubble.getAllBubbles(), t afalse, ""))
     }
 
     init {
