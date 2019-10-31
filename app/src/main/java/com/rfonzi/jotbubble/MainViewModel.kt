@@ -10,7 +10,7 @@ import com.rfonzi.libraries.persistence.GetBubble
 class MainViewModel(private val getBubble: GetBubble) : ViewModel() {
 
     val ui: MutableLiveData<MainUiModel> by lazy {
-        MutableLiveData(MainUiModel(getBubble.getAllBubbles(), false, ""))
+        MutableLiveData(MainUiModel(getBubble.getAllBubbles(), ""))
     }
 
     init {
@@ -27,26 +27,11 @@ class MainViewModel(private val getBubble: GetBubble) : ViewModel() {
             Bubble(9, "90-=", listOf()),
             Bubble(10, "\\'/.", listOf()),
             Bubble(11, "asdf", listOf())
-        ), false, "")
+        ),  "")
     }
 
     fun sendIntent(intent: MainIntent) {
-        when (intent) {
-            is MainIntent.ToggleAddBubbleSheet -> handleToggleAddBubbleSheet()
-            is MainIntent.Transition -> handleTransition(intent.event)
-        }
-    }
-
-    fun handleTransition(event: MainActivity.MotionEnum) {
-        when (event) {
-            MainActivity.MotionEnum.END -> handleToggleAddBubbleSheet()
-            else -> println("do nothing")
-        }
-    }
-
-    fun handleToggleAddBubbleSheet() {
-        val prev = ui.value ?: throw Exception("ui model isn't set")
-        ui.value = prev.copy(addFabSheetUp = !prev.addFabSheetUp, bubbleInput = "")
+        
     }
 
 }
